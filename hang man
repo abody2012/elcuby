@@ -1,0 +1,35 @@
+#include <iostream>
+using namespace std;
+
+int main() {
+    string word = "apple";
+    string hidden(word.size(), '*');
+    int attempts = 6;
+
+    cout << "Hangman Game!\n";
+
+    while (attempts > 0 && hidden != word) {
+        cout << "Word: " << hidden << " | Attempts left: " << attempts << endl;
+        char guess;
+        cout << "Enter a letter: ";
+        cin >> guess;
+
+        bool found = false;
+        for (int i = 0; i < word.size(); i++) {
+            if (word[i] == guess) {
+                hidden[i] = guess;
+                found = true;
+            }
+        }
+
+        if (!found) {
+            attempts--;
+            cout << "Wrong guess!\n";
+        }
+    }
+
+    if (hidden == word) cout << "You win! The word was " << word << endl;
+    else cout << "Game over! The word was " << word << endl;
+
+    return 0;
+}
