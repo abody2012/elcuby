@@ -1,0 +1,16 @@
+#include <iostream>
+using namespace std;
+
+int main() {
+    int players = 4;
+    int spy = 2; // player number 2 is the spy
+    cout << "Spy Game!\nThere are " << players << " players.\n";
+
+    int guess;
+    cout << "Guess who is the spy (1-" << players << "): ";
+    cin >> guess;
+
+    if (guess == spy) cout << "You found the spy!\n";
+    else cout << "Wrong! Player " << spy << " was the spy.\n";
+    return 0;
+}
