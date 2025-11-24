@@ -1,0 +1,16 @@
+#include <iostream>
+#include <string>
+using namespace std;
+
+int main() {
+    string word = "programming";
+    string input;
+
+    cout << "Type this word: " << word << endl;
+    cin >> input;
+
+    if (input == word) cout << "Correct typing!\n";
+    else cout << "Wrong typing!\n";
+
+    return 0;
+}
