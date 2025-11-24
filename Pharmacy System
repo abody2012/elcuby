@@ -1,0 +1,56 @@
+#include <iostream>
+#include <string>
+using namespace std;
+
+struct Medicine {
+    string name;
+    double price;
+    int quantity;
+};
+
+int main() {
+    Medicine meds[3] = {
+        {"Paracetamol", 10.0, 20},
+        {"Aspirin", 15.0, 15},
+        {"Amoxicillin", 25.0, 10}
+    };
+
+    int choice;
+    cout << "Pharmacy System\n";
+    cout << "1. Show Medicines\n2. Buy Medicine\n3. Exit\n";
+
+    while (true) {
+        cout << "Enter choice: ";
+        cin >> choice;
+
+        if (choice == 1) {
+            cout << "Available Medicines:\n";
+            for (int i = 0; i < 3; i++) {
+                cout << i+1 << ". " << meds[i].name
+                     << " | Price: " << meds[i].price
+                     << " | Quantity: " << meds[i].quantity << endl;
+            }
+        } else if (choice == 2) {
+            int id, qty;
+            cout << "Enter medicine number: ";
+            cin >> id;
+            cout << "Enter quantity: ";
+            cin >> qty;
+
+            if (id >= 1 && id <= 3 && qty <= meds[id-1].quantity) {
+                double total = qty * meds[id-1].price;
+                meds[id-1].quantity -= qty;
+                cout << "You bought " << qty << " of " << meds[id-1].name
+                     << ". Total = " << total << endl;
+            } else {
+                cout << "Invalid purchase!\n";
+            }
+        } else if (choice == 3) {
+            cout << "Exiting system...\n";
+            break;
+        } else {
+            cout << "Invalid choice!\n";
+        }
+    }
+    return 0;
+}
