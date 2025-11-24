@@ -1,0 +1,36 @@
+#include <iostream>
+#include <string>
+using namespace std;
+
+int main() {
+    string command;
+    bool hasKey = false;
+
+    cout << "Text Adventure!\nYou are in a room. There is a door north.\n";
+
+    while (true) {
+        cout << "> ";
+        cin >> command;
+
+        if (command == "look") {
+            cout << "You see a key on the floor.\n";
+        } else if (command == "take") {
+            hasKey = true;
+            cout << "You picked up the key.\n";
+        } else if (command == "go") {
+            string dir;
+            cin >> dir;
+            if (dir == "north") {
+                if (hasKey) {
+                    cout << "You unlock the door and escape. You win!\n";
+                    break;
+                } else {
+                    cout << "The door is locked. You need a key.\n";
+                }
+            }
+        } else {
+            cout << "Unknown command.\n";
+        }
+    }
+    return 0;
+}
