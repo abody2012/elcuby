@@ -1,0 +1,27 @@
+    #include <iostream>
+using namespace std;
+
+int main() {
+    int score = 0;
+    string answer;
+
+    cout << "Quiz Game!\n";
+
+    cout << "Q1: Capital of France? ";
+    cin >> answer;
+    if (answer == "Paris") { cout << "Correct!\n"; score++; }
+    else cout << "Wrong!\n";
+
+    cout << "Q2: 5 * 6 = ? ";
+    cin >> answer;
+    if (answer == "30") { cout << "Correct!\n"; score++; }
+    else cout << "Wrong!\n";
+
+    cout << "Q3: Who wrote 'Hamlet'? ";
+    cin >> answer;
+    if (answer == "Shakespeare") { cout << "Correct!\n"; score++; }
+    else cout << "Wrong!\n";
+
+    cout << "Game Over! Your score: " << score << "/3\n";
+    return 0;
+}
