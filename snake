@@ -1,0 +1,23 @@
+#include <iostream>
+using namespace std;
+
+int main() {
+    int position = 1;
+    int dice;
+    cout << "Snakes & Ladders!\n";
+
+    while (position < 20) {
+        cout << "You are at square " << position << ". Roll dice (enter number 1-6): ";
+        cin >> dice;
+        position += dice;
+
+        if (position == 5) { cout << "Ladder! Go to 10.\n"; position = 10; }
+        if (position == 15) { cout << "Snake! Go back to 7.\n"; position = 7; }
+
+        if (position >= 20) {
+            cout << "You reached the end! You win!\n";
+            break;
+        }
+    }
+    return 0;
+}
