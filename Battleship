@@ -1,0 +1,28 @@
+#include <iostream>
+using namespace std;
+
+int main() {
+    const int SIZE = 5;
+    char board[SIZE][SIZE];
+    int shipX = 2, shipY = 3; // hidden ship
+
+    // initialize board
+    for (int i = 0; i < SIZE; i++)
+        for (int j = 0; j < SIZE; j++)
+            board[i][j] = '*';
+
+    int x, y;
+    cout << "Battleship Game! Board size 5x5.\n";
+    while (true) {
+        cout << "Enter coordinates (x y): ";
+        cin >> x >> y;
+        if (x == shipX && y == shipY) {
+            cout << "Hit! You sank the battleship!\n";
+            break;
+        } else {
+            cout << "Miss!\n";
+            board[y][x] = 'o';
+        }
+    }
+    return 0;
+}
