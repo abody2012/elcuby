@@ -1,0 +1,15 @@
+#include <iostream>
+using namespace std;
+
+int main() {
+    string word = "football";
+    cout << "Charades Game!\n";
+    cout << "Hint: It's a sport played with a ball.\n";
+    string guess;
+    cout << "Your guess: ";
+    cin >> guess;
+
+    if (guess == word) cout << "Correct!\n";
+    else cout << "Wrong! The word was " << word << endl;
+    return 0;
+}
