@@ -1,0 +1,76 @@
+#include <iostream>
+#include <string>
+using namespace std;
+
+struct Account {
+    string name;
+    int number;
+    double balance;
+};
+
+int main() {
+    Account accs[2] = {
+        {"Mayada", 1001, 5000.0},
+        {"Ali", 1002, 3000.0}
+    };
+
+    int choice;
+    cout << "Bank System\n";
+    cout << "1. Show Accounts\n2. Deposit\n3. Withdraw\n4. Transfer\n5. Exit\n";
+
+    while (true) {
+        cout << "Enter choice: ";
+        cin >> choice;
+
+        if (choice == 1) {
+            for (int i = 0; i < 2; i++) {
+                cout << "Account: " << accs[i].name 
+                     << " | Number: " << accs[i].number 
+                     << " | Balance: " << accs[i].balance << endl;
+            }
+        } else if (choice == 2) {
+            int num; double amount;
+            cout << "Enter account number: "; cin >> num;
+            cout << "Enter amount to deposit: "; cin >> amount;
+            for (int i = 0; i < 2; i++) {
+                if (accs[i].number == num) {
+                    accs[i].balance += amount;
+                    cout << "Deposit successful! New balance = " << accs[i].balance << endl;
+                }
+            }
+        } else if (choice == 3) {
+            int num; double amount;
+            cout << "Enter account number: "; cin >> num;
+            cout << "Enter amount to withdraw: "; cin >> amount;
+            for (int i = 0; i < 2; i++) {
+                if (accs[i].number == num) {
+                    if (amount <= accs[i].balance) {
+                        accs[i].balance -= amount;
+                        cout << "Withdraw successful! New balance = " << accs[i].balance << endl;
+                    } else cout << "Insufficient balance!\n";
+                }
+            }
+        } else if (choice == 4) {
+            int from, to; double amount;
+            cout << "Enter sender account number: "; cin >> from;
+            cout << "Enter receiver account number: "; cin >> to;
+            cout << "Enter amount: "; cin >> amount;
+            int iFrom = -1, iTo = -1;
+            for (int i = 0; i < 2; i++) {
+                if (accs[i].number == from) iFrom = i;
+                if (accs[i].number == to) iTo = i;
+            }
+            if (iFrom != -1 && iTo != -1 && accs[iFrom].balance >= amount) {
+                accs[iFrom].balance -= amount;
+                accs[iTo].balance += amount;
+                cout << "Transfer successful!\n";
+            } else cout << "Transfer failed!\n";
+        } else if (choice == 5) {
+            cout << "Exiting system...\n";
+            break;
+        } else {
+            cout << "Invalid choice!\n";
+        }
+    }
+    return 0;
+}
