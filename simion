@@ -1,0 +1,19 @@
+
+#include <iostream>
+#include <string>
+using namespace std;
+
+int main() {
+    string sequence = "ABCD"; // the sequence to repeat
+    string input;
+
+    cout << "Simon Says!\n";
+    cout << "Repeat this sequence: " << sequence << endl;
+    cout << "Your input: ";
+    cin >> input;
+
+    if (input == sequence) cout << "Correct! You win!\n";
+    else cout << "Wrong! The sequence was " << sequence << endl;
+
+    return 0;
+}
