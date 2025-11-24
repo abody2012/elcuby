@@ -1,0 +1,48 @@
+#include <iostream>
+using namespace std;
+
+void swapChars(char& a, char& b) {
+    char temp = a;
+    a = b;
+    b = temp;
+}
+
+void scramble(char* word, int len) {
+    for (int i = 0; i < len; i++) {
+        int j = (i * 3 + 7) % len; 
+        swapChars(word[i], word[j]);
+    }
+}
+
+int main() {
+    char original[] = "banana";
+    char scrambled[100];
+
+    
+    int len = 0;
+    while (original[len] != '\0') {
+        scrambled[len] = original[len];
+        len++;
+    }
+    scrambled[len] = '\0';
+
+    scramble(scrambled, len);
+
+    cout << "Unscramble this word: " << scrambled << endl;
+    cout << "Your guess: ";
+    char guess[100];
+    cin >> guess;
+
+    bool correct = true;
+    for (int i = 0; i < len; i++) {
+        if (guess[i] != original[i]) {
+            correct = false;
+            break;
+        }
+    }
+
+    if (correct) cout << "Correct! You guessed the word.\n";
+    else cout << "Wrong! The word was: " << original << endl;
+
+    return 0;
+}
