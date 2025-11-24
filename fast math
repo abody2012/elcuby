@@ -1,0 +1,14 @@
+#include <iostream>
+using namespace std;
+
+int main() {
+    int a = 7, b = 5;
+    cout << "Fast Math!\n";
+    cout << "What is " << a << " + " << b << "? ";
+    int answer;
+    cin >> answer;
+
+    if (answer == a + b) cout << "Correct!\n";
+    else cout << "Wrong! The answer is " << a + b << endl;
+    return 0;
+}
