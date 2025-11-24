@@ -1,0 +1,29 @@
+#include <iostream>
+using namespace std;
+
+int main() {
+    int score = 0;
+
+    cout << "Math Riddle Challenge!\n";
+
+    for (int level = 1; level <= 3; level++) {
+        int a = level * 3;
+        int b = level * 5;
+        int c = level * 2;
+
+        cout << "Level " << level << ": Solve " << a << " + " << b << " * " << c << " = ? ";
+        int answer;
+        cin >> answer;
+
+        int correct = a + b * c;
+        if (answer == correct) {
+            cout << "Correct!\n";
+            score++;
+        } else {
+            cout << "Wrong! Answer is " << correct << endl;
+        }
+    }
+
+    cout << "Game Over! Your score: " << score << "/3\n";
+    return 0;
+}
