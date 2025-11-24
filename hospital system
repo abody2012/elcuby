@@ -1,0 +1,87 @@
+#include <iostream>
+#include <string>
+using namespace std;
+
+struct Patient {
+    string name;
+    int age;
+    string disease;
+    int room;
+};
+
+int main() {
+    Patient patients[5];
+    int count = 0;
+    int choice;
+
+    cout << "Hospital System\n";
+    cout << "1. Add Patient\n2. Show Patients\n3. Search Patient\n4. Discharge Patient\n5. Exit\n";
+
+    while (true) {
+        cout << "Enter choice: ";
+        cin >> choice;
+
+        if (choice == 1) {
+            if (count < 5) {
+                cout << "Enter name: ";
+                cin >> patients[count].name;
+                cout << "Enter age: ";
+                cin >> patients[count].age;
+                cout << "Enter disease: ";
+                cin >> patients[count].disease;
+                cout << "Enter room number: ";
+                cin >> patients[count].room;
+                count++;
+                cout << "Patient added successfully!\n";
+            } else {
+                cout << "Hospital full!\n";
+            }
+        } else if (choice == 2) {
+            cout << "Current Patients:\n";
+            for (int i = 0; i < count; i++) {
+                cout << i+1 << ". " << patients[i].name 
+                     << " | Age: " << patients[i].age 
+                     << " | Disease: " << patients[i].disease 
+                     << " | Room: " << patients[i].room << endl;
+            }
+        } else if (choice == 3) {
+            string searchName;
+            cout << "Enter patient name: ";
+            cin >> searchName;
+            bool found = false;
+            for (int i = 0; i < count; i++) {
+                if (patients[i].name == searchName) {
+                    cout << "Found: " << patients[i].name 
+                         << " | Age: " << patients[i].age 
+                         << " | Disease: " << patients[i].disease 
+                         << " | Room: " << patients[i].room << endl;
+                    found = true;
+                }
+            }
+            if (!found) cout << "Patient not found!\n";
+        } else if (choice == 4) {
+            string dischargeName;
+            cout << "Enter patient name to discharge: ";
+            cin >> dischargeName;
+            bool removed = false;
+            for (int i = 0; i < count; i++) {
+                if (patients[i].name == dischargeName) {
+                    for (int j = i; j < count-1; j++) {
+                        patients[j] = patients[j+1];
+                    }
+                    count--;
+                    cout << "Patient discharged successfully!\n";
+                    removed = true;
+                    break;
+                }
+            }
+            if (!removed) cout << "Patient not found!\n";
+        } else if (choice == 5) {
+            cout << "Exiting system...\n";
+            break;
+        } else {
+            cout << "Invalid choice!\n";
+        }
+    }
+    return 0;
+}
