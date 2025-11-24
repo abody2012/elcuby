@@ -1,0 +1,20 @@
+#include <iostream>
+using namespace std;
+
+struct Character {
+    string name;
+    string hint;
+};
+
+int main() {
+    Character c = {"Batman", "A superhero who wears a black suit and fights crime at night."};
+    cout << "Who Am I?\nHint: " << c.hint << endl;
+
+    string guess;
+    cout << "Your guess: ";
+    cin >> guess;
+
+    if (guess == c.name) cout << "Correct!\n";
+    else cout << "Wrong! I was " << c.name << endl;
+    return 0;
+}
